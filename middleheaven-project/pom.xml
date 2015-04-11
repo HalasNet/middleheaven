@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>middleheaven</groupId>
+	<artifactId>middleheaven-project</artifactId>
+	<version>1.0.0</version>
+	
+	<name>MiddleHeaven</name>
+	<description>MiddleHeaven aims to be a full-featured
+		business application framework that minimizes all effort concerning non-functional requirements
+		and dependency of third-party libraries, thus maximizing extensability and reusability of business code and logic.  
+	</description>
+	
+	<url>http://middleheaven.wordpress.com/</url>
+
+ 	<packaging>pom</packaging>
+ 
+	<modules>
+		<!-- not official 
+		<module>../middleheaven-business/module>
+		<module>../middleheaven-chart</module>
+		-->
+		<module>../middleheaven-utils</module>
+		<module>../middleheaven-cache</module>
+		<module>../middleheaven-core</module>
+		<module>../middleheaven-math</module>
+		<module>../middleheaven-desktop</module>
+		<module>../middleheaven-reports</module>
+		<module>../middleheaven-io</module>
+		<module>../middleheaven-io-ftp</module>
+		<module>../middleheaven-io-vfs</module>
+		<module>../middleheaven-mail</module>
+		<module>../middleheaven-namedirectory</module>
+		<module>../middleheaven-enterprise</module>
+		<module>../middleheaven-security</module>
+	    <module>../middleheaven-storage-orm</module>
+	    <module>../middleheaven-storage-dataset</module>
+		<module>../middleheaven-text-indexing</module>
+		<module>../middleheaven-transactions</module>
+		<module>../middleheaven-ui</module>
+		<module>../middleheaven-ui-vaadin</module>
+		<module>../middleheaven-validation</module>
+		<module>../middleheaven-web</module>
+		<module>../middleheaven-web-server</module>
+		<module>../middleheaven-web-client</module>
+		<module>../middleheaven-web-appengine</module>
+		<module>../middleheaven-work</module>
+		<module>../middleheaven-image</module>
+		<module>../middleheaven-crypto</module>
+		<module>../middleheaven-licence</module>
+		<module>../middleheaven-storage-odb</module>
+		<module>../middleheaven-storage-hibernate</module>
+		<module>../middleheaven-web-commonsupload</module>
+		<module>../middleheaven-domain</module>
+	</modules>
+
+	<developers>
+		<developer>
+			<id>staborda</id>
+			<name>Sergio Taborda</name>
+			<email>sergiotaborda(at)yahoo.com.br</email>
+			<url>http://sergiotaborda.javabuilding.com</url>
+			<organization></organization>
+			<roles>
+				<role>Creator</role>
+				<role>Architect</role>
+				<role>Designer</role>
+				<role>Developer</role>
+				<role>Programmer</role>
+			</roles>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>BSD License (original)</name>
+			<url>
+				http://www.opensource.org/licenses/bsd-license.php
+			</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:svn:https://middleheaven.googlecode.com/svn/trunk/</connection>
+		<developerConnection>scm:svn:https://middleheaven.googlecode.com/svn/trunk/</developerConnection>
+		<url>http://middleheaven.googlecode.com/</url>
+	</scm>
+	<build>
+		<plugins>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <version>2.0.2</version>
+		        <configuration>
+		            <source>1.8</source>
+		            <target>1.8</target>
+		   		</configuration>
+		    </plugin> 
+		    
+		    <plugin> 
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId> 
+				<version>2.5</version> 
+				<configuration>
+					<outputDirectory>${basedir}/../middleheaven-core</outputDirectory>
+					<reportOutputDirectory>${basedir}/../middleheaven-core</reportOutputDirectory>
+					<javadocDirectory>${basedir}/resources</javadocDirectory>
+					<stylesheetfile>${basedir}/javadocstyle.css</stylesheetfile>
+					<excludePackageNames>org.middleheaven.test*</excludePackageNames>
+					<failOnError>false</failOnError>
+					<javadocVersion>1.8</javadocVersion>
+					<source>1.8</source>
+					<show>protected</show>
+					<groups>
+					  <group>
+					    <title>Core Toolbox</title>
+					    <packages>org.middleheaven.process.progress:org.middleheaven.core:org.middleheaven.core.*:org.middleheaven.graph:org.middleheaven.application:org.middleheaven.application.*:org.middleheaven.events:org.middleheaven.events.*:org.middleheaven.global:org.middleheaven.global.*:org.middleheaven.io:org.middleheaven.io.*:org.middleheaven.logging:org.middleheaven.logging.*:org.middleheaven.pagination:org.middleheaven.pagination.*:org.middleheaven.process:org.middleheaven.quantity:org.middleheaven.quantity.*:org.middleheaven.util:org.middleheaven.util.*:org.middleheaven.sequence:org.middleheaven.sequence.*:org.middleheaven.tool.*</packages>
+					  </group>
+					   <group>
+					    <title>Cache Toolbox</title>
+					    <packages>org.middleheaven.cache:org.middleheaven.cache.*</packages>
+					  </group>
+					  <group>
+					    <title>Chart Toolbox</title>
+					    <packages>org.middleheaven.chart:org.middleheaven.chart.*</packages>
+					  </group>
+					  <group>
+					    <title>Crypto Toolbox</title>
+					    <packages>org.middleheaven.crypto:org.middleheaven.crypto.*</packages>
+					  </group>
+					   <group>
+					    <title>Desktop UI Toolbox</title>
+					    <packages>org.middleheaven.ui.desktop:org.middleheaven.ui.desktop.*:org.middleheaven.core.bootstrap.client</packages>
+					  </group>
+					   <group>
+					    <title>Enterprise Toolbox</title>
+					    <packages>org.middleheaven.notification:org.middleheaven.notification.*</packages>
+					  </group>
+					  <group>
+					    <title>Image Toolbox</title>
+					    <packages>org.middleheaven.image:org.middleheaven.image.*</packages>
+					  </group>
+					   <group>
+					    <title>Licence Toolbox</title>
+					    <packages>org.middleheaven.licence:org.middleheaven.licence.*</packages>
+					  </group>
+					   <group>
+					    <title>Math Toolbox</title>
+					    <packages>org.middleheaven.quantity.math:org.middleheaven.quantity.math.*</packages>
+					  </group>
+					  <group>
+					    <title>Mail Toolbox</title>
+					    <packages>org.middleheaven.mail:org.middleheaven.mail.*</packages>
+					  </group>
+					  <group>
+					    <title>Name Directory Toolbox</title>
+					    <packages>org.middleheaven.namedirectory:org.middleheaven.namedirectory.*</packages>
+					  </group>
+					   <group>
+					    <title>Reports Toolbox</title>
+					    <packages>org.middleheaven.report:org.middleheaven.report.*</packages>
+					  </group>
+					   <group>
+					    <title>Security Toolbox</title>
+					    <packages>org.middleheaven.aas:org.middleheaven.aas.*</packages>
+					  </group>
+					  <group>
+					    <title>Dataset Toolbox</title>
+					    <packages>org.middleheaven.persistance:org.middleheaven.persistance.*:org.middleheaven.sequence.persistance.*</packages>
+					  </group>
+					   <group>
+					    <title>ORM Toolbox</title>
+					    <packages>org.middleheaven.domain:org.middleheaven.domain.*:org.middleheaven.model:org.middleheaven.model.*:org.middleheaven.storage:org.middleheaven.storage.*</packages>
+					  </group>
+					  <group>
+					    <title>Text Indexing Toolbox</title>
+					    <packages>org.middleheaven.text.indexing:org.middleheaven.text.indexing.*:org.middleheaven.util.criteria.text</packages>
+					  </group>
+					  <group>
+					    <title>Transactional Indexing Toolbox</title>
+					    <packages>org.middleheaven.transactions</packages>
+					  </group>
+					   <group>
+					    <title>UI Toolbox</title>
+					    <packages>org.middleheaven.ui:org.middleheaven.ui.*</packages>
+					  </group>
+					  <group>
+					    <title>Vaadin Rendering Toolbox</title>
+					    <packages>org.middleheaven.ui.web.vaadin</packages>
+					  </group>
+					   <group>
+					    <title>Web Toolbox</title>
+					    <packages>org.middleheaven.process.web</packages>
+					  </group>
+					   <group>
+					  <title>Web Server Toolbox</title>
+					    <packages>org.middleheaven.process.web.server:org.middleheaven.process.web.server.*:org.middleheaven.application.web.*:org.middleheaven.ui.web.*:org.middleheaven.web.*</packages>
+					  </group>
+					  <group>
+					   <title>Web Client Toolbox</title>
+					    <packages>org.middleheaven.process.web.client:org.middleheaven.process.web.client.*</packages>
+					  </group>
+					  <group>
+					    <title>Work Toolbox</title>
+					    <packages>org.middleheaven.work:org.middleheaven.work.*</packages>
+					  </group>
+					</groups>
+				</configuration> 
+			</plugin> 
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/
+			</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<reporting>
+		<plugins>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-site-plugin</artifactId>
+			  <version>2.0-beta-6</version>
+			  <configuration>
+					<templateDirectory>
+						${basedir}/src/site/resources
+					</templateDirectory>
+					<template>maven-site.vm</template>
+			  </configuration>
+			</plugin> 
+				
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.2</version> 
+			</plugin>
+			
+			<!--  
+			<plugin>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+-->
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.4</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>dependencies</report>
+							<report>project-team</report>
+							<report>license</report>
+							<report>issue-tracking</report>
+							<report>scm</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<xmlPath>${basedir}/src/site/changes.xml
+					</xmlPath>
+					<issueLinkTemplate>
+						http://sourceforge.net/support/tracker.php?aid=%ISSUE%
+					</issueLinkTemplate>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>changes-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>2.0.2</version>
+						<configuration>
+							<source>1.8</source>
+							<target>1.8</target>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-source-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
