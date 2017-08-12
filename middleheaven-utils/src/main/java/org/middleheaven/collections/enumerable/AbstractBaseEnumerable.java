@@ -177,7 +177,7 @@ public abstract class AbstractBaseEnumerable<T> implements Enumerable<T> {
 	public boolean every(Predicate<T> predicate) {
 		Iterator<T> it = iterator();
 		while (it.hasNext()){
-			if (predicate.test(it.next())){
+			if (!predicate.test(it.next())){
 				return false;
 			}
 		}

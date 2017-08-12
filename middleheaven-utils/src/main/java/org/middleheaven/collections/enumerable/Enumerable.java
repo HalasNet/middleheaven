@@ -1,6 +1,7 @@
 package org.middleheaven.collections.enumerable;
 
 import java.util.Comparator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -237,6 +238,8 @@ public interface Enumerable<T> extends Iterable<T>{
 	public <P, R> Optional<Enumerable<R>> zipExact(Enumerable<P> other,  BinaryFunction<R, T, P> zipfunction);
 
 
-
+	public default List<T> toList(){
+		return this.into(Sink.collections()).list();
+	}
 
 }

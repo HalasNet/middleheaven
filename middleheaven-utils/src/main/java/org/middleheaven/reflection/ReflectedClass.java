@@ -19,7 +19,13 @@ public interface ReflectedClass<T> {
 	
 	public boolean equals(Class<?> other); 
 	
-	public T newProxyInstance(ProxyHandler handler, Sequence<Object> args);
+	/**
+	 * Proxy a class that has a constructor with arguments.
+	 * @param handler
+	 * @param args
+	 * @return
+	 */
+	public T newProxyInstance(ProxyHandler handler, Object... args);
 
 	public default T newProxyInstance(ProxyHandler handler){
 		return newProxyInstance(handler, Sequences.empty());

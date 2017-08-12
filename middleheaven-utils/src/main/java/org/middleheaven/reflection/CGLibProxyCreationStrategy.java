@@ -111,10 +111,11 @@ class CGLibProxyCreationStrategy extends AbstractProxyCreationStrategy{
 
 				@SuppressWarnings("rawtypes")
 				Class[] argumentTypes = new Class[constructorArgs.size()];
-				Object[] argumentValues = new Class[constructorArgs.size()];
+				Object[] argumentValues = new Object[constructorArgs.size()];
 				for (int i =0; i < constructorArgs.size(); i++){
-					argumentTypes[i] = this.getRealType(constructorArgs.get(i).getClass());
-					argumentValues[i] = constructorArgs.get(i);
+					Object parameter = constructorArgs.get(i);
+					argumentTypes[i] = this.getRealType(parameter.getClass());
+					argumentValues[i] = parameter;
 				}
 
 				return facadeClass.cast(en.create(argumentTypes, argumentValues));

@@ -19,6 +19,14 @@ import org.middleheaven.util.function.Predicate;
  */
 public interface Sequence<T> extends Assortment<T> {
 
+	public static <X> Sequence<X> empty() {
+		return EmptySequence.getInstance();
+	}
+	
+	public static <X> Sequence<X> of(X ... args) {
+		return new ArraySequence<>(args);
+	}
+	
 	/**
 	 * 
 	 */
@@ -125,4 +133,8 @@ public interface Sequence<T> extends Assortment<T> {
 	 * @return
 	 */
 	public <R, O> Sequence<R> zip(Sequence<O> other, BinaryFunction<R, T, O> object);
+	
+	
+
+
 }

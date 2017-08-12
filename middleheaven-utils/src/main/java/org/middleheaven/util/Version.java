@@ -48,7 +48,7 @@ public final class Version implements Comparable<Version>, Serializable{
 		
 		String tag = null;
 		if (pars.size() > 4){
-			tag =  pars.reverse().getLast();
+			tag =  pars.reverse().getFirst();
 		}
 		
 		Sequence<Integer> res = pars.subSequence(0, 4).map(s -> TypeCoercing.coerce(s, Integer.class));

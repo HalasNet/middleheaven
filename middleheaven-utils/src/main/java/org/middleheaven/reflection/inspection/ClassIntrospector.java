@@ -197,7 +197,7 @@ public class ClassIntrospector<T> extends Introspector{
 	}
 
 	public T newInstance (){
-		return type.newInstance(Sequences.empty());
+		return type.newInstance(new Object[0]);
 	}
 	
 	public T newInstance (ClassLoader otherClassLoader, Sequence<Object> args){
@@ -213,7 +213,7 @@ public class ClassIntrospector<T> extends Introspector{
 	} 
 
 	public <I> I newProxyInstance(ProxyHandler handler, Class<I> proxyInterface){
-		return newProxyInstance(handler, proxyInterface);
+		return newProxyInstance(handler, proxyInterface, Sequence.empty());
 	}
 	public <I> I newProxyInstance(ProxyHandler handler, Class<I> proxyInterface , Sequence<Class<?>> adicionalInterfaces){
 		if(!proxyInterface.isInterface()){

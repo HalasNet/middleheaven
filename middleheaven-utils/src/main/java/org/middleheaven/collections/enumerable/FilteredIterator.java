@@ -4,6 +4,7 @@
 package org.middleheaven.collections.enumerable;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.middleheaven.util.function.Predicate;
 
@@ -58,6 +59,9 @@ public class FilteredIterator<T> implements Iterator<T> {
 	public T next() {
 		if (next == null){
 			next = fetchNext();
+		}
+		if (next.isAfterLast()){
+			throw new NoSuchElementException();
 		}
 		T obj = next.object();
 		next = null;

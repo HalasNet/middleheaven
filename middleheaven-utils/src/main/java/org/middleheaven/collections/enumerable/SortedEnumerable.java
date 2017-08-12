@@ -59,7 +59,7 @@ class SortedEnumerable<T> extends AbstractOperationalEnumerable<T> {
 			all = new ArrayList<T>();
 		}
 		
-		for(T t : this){
+		for(T t : this.original()){
 			all.add(t);
 		}
 

@@ -89,7 +89,9 @@ public class JavaReflectedMethod implements ReflectedMethod {
 	public Object invokeStatic(Sequence<Object> args)
 			throws ReflectionException {
 		try{
-			return method.invoke(null, args);
+			return method.invoke(null, args.toArray());
+		
+			
 		} catch (IllegalArgumentException e) {
 			throw ReflectionException.manage(e);
 		} catch (IllegalAccessException e) {

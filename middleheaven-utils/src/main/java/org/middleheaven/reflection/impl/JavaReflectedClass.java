@@ -111,8 +111,8 @@ public class JavaReflectedClass<T> implements ReflectedClass<T>{
 		 return type;
 	}
 	
-	public T newProxyInstance(ProxyHandler handler, Sequence<Object> args){
-		return Reflector.getReflector().proxyType(type(), handler, args);
+	public T newProxyInstance(ProxyHandler handler, Object ... args){
+		return Reflector.getReflector().proxyType(type(), handler, Sequence.of(args));
 	} 
 
 	/**

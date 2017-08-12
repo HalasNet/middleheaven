@@ -2,6 +2,9 @@ package org.middleheaven.util.coersion;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Optional;
 
 import org.junit.Test;
 import org.middleheaven.collections.enumerable.Enumerable;
@@ -26,19 +29,18 @@ public class TypeCoercingTest {
 		//A a = c.coerceForward("AAA",A.class);
 		
 		Enumerable<ReflectedMethod> all = Reflector.getReflector().reflect(A.class)
-		.inspect().staticMethods().named("valueOf").withParametersType(new Class<?>[]{String.class}).retriveAll();
-		
-		assertFalse(all.isEmpty());
-		Object f = all.tryFirst();
-		
-		assertNotNull(f);
-		
-		Object a = Reflector.getReflector().reflect(A.class)
 				.inspect()
 				.staticMethods()
-				.named("valueOf").withParametersType(new Class<?>[]{String.class})
-				.retrive()
-				.invokeStatic(Sequences.of("AAA"));
+				.named("valueOf")
+				.withParametersType(String.class)
+				.retriveAll();
+				
+		assertFalse(all.isEmpty());
+		Optional<ReflectedMethod> f = all.tryFirst();
+		
+		assertNotNull(f);
+		assertTrue(f.isPresent());
+		Object a = f.get().invokeStatic(Sequences.of("AAA"));
 				
 		assertNotNull(a);
 	}

@@ -50,7 +50,7 @@ public class MethodIntrospectionCriteriaBuilder<T> extends ParameterizableMember
 		return this;
 	}
 
-	public MethodIntrospectionCriteriaBuilder<T> withParametersType(Class<?>[] parameterTypes) {
+	public MethodIntrospectionCriteriaBuilder<T> withParametersType(Class<?>... parameterTypes) {
 		super.addParamterTypeFilter(parameterTypes);
 		return this;
 	}
@@ -106,10 +106,18 @@ public class MethodIntrospectionCriteriaBuilder<T> extends ParameterizableMember
 	protected boolean hasParameterTypes(ReflectedMethod obj, Class<?>[] parameterTypes) {
 		
 		final Sequence<ReflectedParameter> parameters = obj.getParameters();
-		
+		if (parameterTypes.length == 0 ){
+			return parameters.isEmpty();
+		}
 		return parameters.asEnumerable().map( t -> t.getType().getReflectedType())
-				.zipExact(Enumerables.asEnumerable(parameterTypes), (reflectType , parameterType) -> reflectType.equals(parameterType) )
+				.zipExact(Enumerables.asEnumerable(parameterTypes), (reflectType , parameterType) -> {
+					return areTypesEqual(reflectType, parameterType);
+				})
 				.map(j -> j.every( b -> b)).orElse(false);
+	}
+
+	private boolean areTypesEqual(Class<?> reflectType, Class<?> parameterType) {
+		return reflectType.isAssignableFrom(parameterType) && parameterType.isAssignableFrom(reflectType);
 	}
 
 	/**

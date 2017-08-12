@@ -13,7 +13,6 @@ import org.middleheaven.collections.enumerable.Enumerable;
 import org.middleheaven.collections.enumerable.Sink;
 import org.middleheaven.collections.enumerable.size.CountableEnumerableSize;
 import org.middleheaven.collections.nw.Sequence;
-import org.middleheaven.collections.nw.Sequences;
 import org.middleheaven.reflection.inspection.ClassIntrospector;
 import org.middleheaven.reflection.inspection.Introspector;
 
@@ -50,7 +49,7 @@ public class ReflectionTest {
 					throws Throwable {
 				return delegator.invokeSuper(proxy, args);
 			}
-		}, Sequences.of("a", 1));
+		}, "a", 1);
 		
 		assertNotNull(instance);
 		assertEquals("a1", instance.test());
